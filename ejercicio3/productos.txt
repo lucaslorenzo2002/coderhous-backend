@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "producto": "fanta",
+    "tamano": "3 litros",
+    "stock": 20,
+    "precio": 500,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 2,
+    "producto": "fanta",
+    "tamano": "3 litros",
+    "stock": 20,
+    "precio": 500,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 3,
+    "producto": "pepsi",
+    "tamano": "2 litros",
+    "stock": 40,
+    "precio": 400,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 4,
+    "producto": "coca-cola",
+    "tamano": "2,25 litros",
+    "stock": 25,
+    "precio": 475,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 5,
+    "producto": "coca-cola",
+    "tamano": "2,25 litros",
+    "stock": 25,
+    "precio": 475,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 6,
+    "producto": "coca-cola",
+    "tamano": "2,25 litros",
+    "stock": 25,
+    "precio": 475,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 7,
+    "producto": "coca-cola",
+    "tamano": "2,25 litros",
+    "stock": 25,
+    "precio": 475,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 8,
+    "producto": "coca-cola",
+    "tamano": "2,25 litros",
+    "stock": 25,
+    "precio": 475,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 9,
+    "producto": "coca-cola",
+    "tamano": "2,25 litros",
+    "stock": 25,
+    "precio": 475,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  }
+]

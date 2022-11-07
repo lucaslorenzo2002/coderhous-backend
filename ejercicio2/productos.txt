@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "producto": "coca-cola",
     "tamano": "2,25 litros",
     "stock": 25,
@@ -7,10 +8,43 @@
     "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
   },
   {
+    "id": 2,
     "producto": "pepsi",
     "tamano": "2 litros",
     "stock": 40,
     "precio": 400,
-    "thumbail": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/219/229/products/40-51b4d2d07bc680935861f085d186fcdf1-ce8ed1c3777262d54916215172296748-50-0.jpg"
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 3,
+    "producto": "fanta",
+    "tamano": "3 litros",
+    "stock": 20,
+    "precio": 500,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 4,
+    "producto": "fanta",
+    "tamano": "3 litros",
+    "stock": 20,
+    "precio": 500,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 5,
+    "producto": "fanta",
+    "tamano": "3 litros",
+    "stock": 20,
+    "precio": 500,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
+  },
+  {
+    "id": 6,
+    "producto": "fanta",
+    "tamano": "3 litros",
+    "stock": 20,
+    "precio": 500,
+    "thumbail": "https://http2.mlstatic.com/D_NQ_NP_632382-MLA49973524416_052022-O.webp"
   }
 ]
