@@ -17,7 +17,7 @@ class Contenedor {
 
      static async getAll (){
         try{
-            let productos =  await fs.promises.readFile(archivo.file, 'utf-8');
+            let productos =  await fs.promises.readFile('productos.txt', 'utf-8');
             return JSON.parse(productos); 
             } catch(err){
                 if(err.message.includes('no such file or directory')) return [];
