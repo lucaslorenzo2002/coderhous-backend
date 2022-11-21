@@ -2,7 +2,7 @@ const express = require('express');
 const{ Router } = express;
 
 const app = express();
-const PORT = 8080;
+const PORT = 6000;
 const RUTA = '/productos';
 const RUTAID = '/productos/:id';
 const router = new Router();

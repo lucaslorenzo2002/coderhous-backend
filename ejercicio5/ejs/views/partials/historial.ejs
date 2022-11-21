@@ -1,0 +1,17 @@
+<%if (products.length > 0){%>
+  <div>
+    <table>
+      <tr> <th>nombre</th>  <th>precio</th> <th>foto</th>
+  <%for (const product of products){%>
+    <tr>
+      <td><%=product.producto%></td>
+      <td><%=product.precio%></td>
+      <td><%=product.file%></td>
+    </tr>
+    <%} %>
+      </tr>
+    </table>
+  </div>
+  <%}else{%>
+    <h3>no hay productos</h3>
+    <%}%>
