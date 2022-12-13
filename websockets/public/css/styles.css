@@ -1,0 +1,27 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+#output{
+    min-height: 200px;
+}
+
+.item{
+    display: flex;
+    justify-content: space-between;
+    margin:  50px;
+}
+
+.mail{
+    color: blue;
+}
+
+.date{
+    color: brown;
+}
+
+.msj{
+    font-style: italic;
+    color: green;
+}

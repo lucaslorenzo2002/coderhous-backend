@@ -2,7 +2,7 @@ const express = require('express');
 const{ Router } = express;
 
 const app = express();
-const PORT = 6000;
+const PORT = 3000;
 const RUTA = '/productos';
 const RUTAID = '/productos/:id';
 const router = new Router();
@@ -58,3 +58,5 @@ router.delete(RUTAID, productNotFound, (req,res) => {
     let productDeleted = products.filter(p => p.id !== id)
     res.json(productDeleted)
 })
+
+
