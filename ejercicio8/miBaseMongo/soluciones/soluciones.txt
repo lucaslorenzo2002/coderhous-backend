@@ -1,0 +1,29 @@
+1-
+db.productos.insertMany([array de productos con columnas solicitadas])
+db.mensajes.insertMany([array de mensajes con columnas solicitadas])
+
+2-
+hecho en el punto 1
+
+3-
+db.productos.find()
+db.mensajes.find()
+
+4-
+db.productos.estimatedDocumentCount()
+db.mensajes.estimatedDocumentCount()
+
+5-
+a- db.productos.insertOne({json})
+b-
+i- db.productos.find({"precio": {$lt: 1000}})
+ii- db.productos.find({$and: [{"precio": {$gt: 1000}}, {"precio" : {$lt: 3000}}]})
+iii- db.productos.find({"precio": {$gt: 3000}})
+iv- db.productos.find({}, {"producto": 1, "_id": 0}).sort({"precio": 1}).limit(1).skip(2)
+c- db.productos.updateMany({}, {$set: {"stock": 100}})
+d- db.productos.upadateMany({"precio": {$gt: 4000}}, {$set: {"stock": 0}})
+e- db.productos.deleteMany({"precio": {$lt: 1000}})
+
+6-
+
+
