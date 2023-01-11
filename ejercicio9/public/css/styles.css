@@ -1,0 +1,16 @@
+body{
+    background-color: black;
+}
+
+.mail{
+    color: blue;
+}
+
+.date{
+    color: brown;
+}
+
+.msj{
+    font-style: italic;
+    color: green;
+}
