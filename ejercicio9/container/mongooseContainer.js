@@ -22,8 +22,10 @@ class messageCrud{
             const parsedData = JSON.parse(stringifiedData);
 
             let newId = 1;
+            let newDate = new Date().toLocaleString()
 
             parsedData.forEach(e =>  e.id = newId++ )
+            parsedData.forEach(e => e.fyh = newDate)
     
             return parsedData
         }catch(err){

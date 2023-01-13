@@ -2,6 +2,10 @@ body{
     background-color: black;
 }
 
+.titulo{
+    color: white
+}
+
 .mail{
     color: blue;
 }

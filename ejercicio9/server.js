@@ -71,7 +71,7 @@ io.on('connection', socket => {
 
         await messagesContainer.postMessage(data);
 
-        io.sockets.emit('new message', await listarMensajesNormalizados())  
+        io.sockets.emit('new message', await listarMensajesNormalizados(), await compresionDeMensajes())  
     })
 
     socket.on('chat: typing', (data) => {
@@ -90,23 +90,28 @@ io.on('connection', socket => {
     
         const chat = new schema.Entity('chat', {messages: [messageSchema]}, {idAttribute: 'id'}) 
     
-        const chatNormalizado = (mensajesConId) => normalize(mensajesConId, chat); 
+        const chatNormalizado = (mensajesConId) => {
+            return normalize(mensajesConId, chat)
+        }; 
         
         
 
     const listarMensajesNormalizados = async() => {
             const mensajes = await messagesContainer.readMessages();
-            const mensajesNormalizado = chatNormalizado({id:'mensajes', mensajes})
-            const mensajeOriginal = {id:'mensajes', mensajes}
-            const mensajesNormalizadoLength = JSON.stringify(mensajesNormalizado).length
-            const mensajeOriginalLength = JSON.stringify(mensajeOriginal).length
-            print(mensajesNormalizado)
-            console.log(mensajeOriginal);
-            console.log(`longitud mensaje normalizado: ${mensajesNormalizadoLength}`);
-            console.log(mensajeOriginalLength);
+            return chatNormalizado({id:'mensajes', messages: mensajes})
         }
 
-listarMensajesNormalizados()
+    const compresionDeMensajes = async() => {
+        const mensajes = await messagesContainer.readMessages();
+        const mensajesNormalizados = chatNormalizado({id:'mensajes', messages: mensajes});
+
+        const mensajesLength = JSON.stringify(mensajes).length;
+        const mensajesNormalizadosLength = JSON.stringify(mensajesNormalizados).length;
+
+        return mensajesNormalizadosLength * 100 / mensajesLength
+    }
+
+    
 
 //CONEXION AL PUERTO
 const PORT = 8080

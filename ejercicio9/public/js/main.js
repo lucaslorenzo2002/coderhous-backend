@@ -1,5 +1,14 @@
+
 const socket = io();
 
+//SCHEMAS
+
+
+const authorSchema = new normalizr.schema.Entity('author', {}, {idAttribute: 'mail'})
+const messageSchema = new normalizr.schema.Entity('message', {author: authorSchema}, {idAttribute: 'id'})
+const Chat = new normalizr.schema.Entity('chat', {messages: [messageSchema]}, {idAttribute: 'id'})  
+
+//DOM
 const chat = document.querySelector('#chat');
 const message = document.querySelector('#message');
 const user = document.querySelector('#user');
@@ -10,7 +19,9 @@ const edad = document.querySelector('#edad');
 const avatarUrl = document.querySelector('#urlAvatar');
 const alias = document.querySelector('#alias');
 const actions = document.querySelector('#actions');
+const outputCompresion = document.querySelector('#compresion');
 
+//EVENTOS
 chat.addEventListener('submit', (e) => {
     e.preventDefault()
     let objeto = {
@@ -31,16 +42,19 @@ chat.addEventListener('submit', (e) => {
     message.addEventListener('keypress', () => {
         socket.emit('chat: typing', user.value)})
     
-    socket.on('new message', (data) => {
-        const html = data.map(msj => {
+    socket.on('new message', (data, compresion) => {
+        const objDenormalizado = normalizr.denormalize(data.result, Chat, data.entities)
+        const dataMsj = objDenormalizado.messages
+        const html = dataMsj.map(msj => {
             return `
             <div class='msj'>
-                <p><strong class="mail">${msj.mail}</strong> <span class="date">${msj.date}</span>: <span class="msj">${msj.message}</span></p> 
+                <p><strong class="mail">${msj.author.mail}</strong> <span class="date">${msj.fyh}</span>: <span class="msj">${msj.message}</span></p> 
             </div>
             `
         })
         actions.innerHTML = ''
-        outputChat.innerHTML = html 
+        outputChat.innerHTML = html  
+        outputCompresion.innerHTML = `<p>%${JSON.stringify(compresion)}</p>`
     }) 
     
     socket.on('typing', data => {
