@@ -90,9 +90,9 @@ io.on('connection', socket => {
     
         const chat = new schema.Entity('chat', {messages: [messageSchema]}, {idAttribute: 'id'}) 
     
-        const chatNormalizado = (mensajesConId) => {
+       const chatNormalizado = (mensajesConId) => {
             return normalize(mensajesConId, chat)
-        }; 
+        };  
         
         
 
