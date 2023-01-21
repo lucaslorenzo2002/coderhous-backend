@@ -36,5 +36,5 @@ form.addEventListener('submit', (e) => {
     }) 
     
 desloguearse.addEventListener('click', () => {
-    window.location.href = '/logout'
+    window.location.href = '/login'
 })
