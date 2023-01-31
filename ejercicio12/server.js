@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const {fork} = require('child_process')
+
 
 const app = express();
 
@@ -10,11 +12,14 @@ const { Server: IOServer } = require('socket.io');
 const httpServer = new HttpServer(app);
 const IO = new IOServer(httpServer);
 
+const Router = require('./routes/router');
+
+
 //MIDDLEWARES
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
-//app.use('/api', Router)
+app.use('/api', Router)
 
 //HANDLEBARS
 const exphbs = require('express-handlebars');
@@ -189,6 +194,36 @@ app.get('/logout', (req, res) => {
     })
 })
 
+//RUTA DE LOS PROCESS
+app.get('/info', (req, res) => {
+    res.json({
+        'sistema operativo: ': process.platform,
+        'version: ': process.version,
+        'memoria total reservada: ': process.memoryUsage(),
+        'path de ejecucion: ': process.title,
+        'process id: ': process.pid,
+        'carpeta: ': process.cwd()
+
+    })
+})
+
+//RUTA DE FORK
+Router.get('/randoms', (req, res) => {
+
+    const length = parseInt(req.query.cant) || 100000
+
+    const calculo = fork(path.resolve(process.cwd(), './randoms.js'));
+
+    calculo.on('message', result => {
+        if(result === 'proceso terminado'){
+            calculo.send(length)
+        }else{
+            res.json(result)  
+        }
+    })
+
+})
+
 const products = []
 
 //SOCKETS
@@ -203,11 +238,28 @@ IO.on('connection', socket => {
  
 })
 
-//CONEXION AL PUERTO
-const PORT = 8080
+//MINIMIST
+const parseArg = require('minimist');
 
-const server = httpServer.listen(process.env.PORT || PORT, () => {
-    console.log(` server listening on PORT: ${PORT}`)
+const options = {
+    alias:{
+        p: 'port',
+        m: 'mode',
+        d: 'debug'
+    },
+    default:{
+        port: 8080,
+        mode: 'dev',
+        debug: true
+    }
+}
+
+//CONEXION AL PUERTO
+const { port } = parseArg(process.argv.slice(2), options);
+const PORT = 8080;
+
+const server = httpServer.listen( port || PORT, () => {
+    console.log(` server listening on PORT: ${port}`)
 })
 
 server.on('error', err => console.log(err))
