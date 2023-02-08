@@ -62,3 +62,4 @@ chat.addEventListener('submit', (e) => {
         <strong>${data}:</strong> is typing...
         </p>`
     })
+
