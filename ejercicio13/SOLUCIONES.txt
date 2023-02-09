@@ -1,9 +1,7 @@
 //EJECUTAR SERVIDORES NODE
 
-1- hecho en server.js
-2- hecho en server.js
-3- Ejecute el servidor en el cmd con forever start server.js -w y liste los procesos con forever list
-4- Ejecute el servidor en el cmd en modo cluster con pm2 start server.js --name serverCluster --watch  -i 4 -- 8080 y en modo fork con pm2 start server.js --name serverCluster --watch  -i 4 -- 8080,
+1- node server.js -p 8080 -m FORK / node server.js -p 8080 -m CLUSTER
+2- Ejecute el servidor en el cmd con forever start server.js -w  -p 8080 -m FORK / forever start server.js -w  -p 8080 -m CLUSTER y liste los procesos con forever list
+3- Ejecute el servidor en el cmd en modo cluster con pm2 start server.js --name serverCluster --watch  -i 4 -- 8080 y en modo fork con pm2 start server.js --name serverCluster --watch  -i 4 -- 8080,
 listo los procesos con pm2 list
-5- forever start 8080 
-6- 
+
