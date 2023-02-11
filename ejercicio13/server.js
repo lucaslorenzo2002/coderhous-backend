@@ -3,11 +3,28 @@ const path = require('path');
 const {fork} = require('child_process')
 const cluster = require('cluster');
 const os = require('os');
+const parseArg = require('minimist');
 
+const app = express();
+
+const options = {
+    alias:{
+        p: 'port',
+        m: 'mode',
+        d: 'debug'
+    },
+    default:{
+        port: 8080,
+        mode: 'FORK',
+        debug: true
+    }
+}
+
+const args = parseArg(process.argv.slice(2), options);
 //NUMERO DE PROCESADORES
 const numCpus = os.cpus().length;
 
-if(cluster.isPrimary){
+if(args.mode === 'FORK' && cluster.isPrimary){
     console.log(numCpus);
     console.log(process.pid);
     for(let i = 0; i < numCpus; i++){
@@ -19,7 +36,6 @@ if(cluster.isPrimary){
         cluster.fork()
     })
 }else{
-const app = express();
 
 require('dotenv').config()
 
@@ -256,28 +272,11 @@ IO.on('connection', socket => {
  
 })
 
-//MINIMIST
-const parseArg = require('minimist');
-
-const options = {
-    alias:{
-        p: 'port',
-        m: 'mode',
-        d: 'debug'
-    },
-    default:{
-        port: 8080,
-        mode: 'fork',
-        debug: true
-    }
-}
-
 //CONEXION AL PUERTO
-const { port } = parseArg(process.argv.slice(2), options);
 const PORT = 8080;
 
-const server = httpServer.listen( port || PORT, () => {
-    console.log(` server listening on PORT: ${port}`)
+const server = httpServer.listen( PORT, () => {
+    console.log(` server listening on PORT: ${PORT}`)
 })
 
 server.on('error', err => console.log(err))
