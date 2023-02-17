@@ -21,6 +21,7 @@ const options = {
 }
 
 const args = parseArg(process.argv.slice(2), options);
+
 //NUMERO DE PROCESADORES
 const numCpus = os.cpus().length;
 
